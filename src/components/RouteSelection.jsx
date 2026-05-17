@@ -114,11 +114,17 @@ export default function RouteSelection({ routes, onSelectRoute, loading }) {
                       <span className="truncate">
                         {route.station1Name || 'Station 1'}
                       </span>
-                      <span className="mx-1 text-text-secondary/40">→</span>
-                      <MapPin className="w-3.5 h-3.5 shrink-0" />
-                      <span className="truncate">
-                        {route.station2Name || 'Station 2'}
-                      </span>
+                      {route.station2_lat != null && route.station2_lng != null ? (
+                        <>
+                          <span className="mx-1 text-text-secondary/40">→</span>
+                          <MapPin className="w-3.5 h-3.5 shrink-0" />
+                          <span className="truncate">
+                            {route.station2Name || 'Station 2'}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="ml-2 text-accent-amber/60 text-xs">(single station)</span>
+                      )}
                     </div>
 
                     {route.busCount === 0 && (

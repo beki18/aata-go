@@ -4,6 +4,7 @@ import RouteSelection from './components/RouteSelection';
 import LiveMap from './components/LiveMap';
 import AboutScreen from './components/AboutScreen';
 import BottomNav from './components/BottomNav';
+import ErrorBoundary from './components/ErrorBoundary';
 import { useRoutes, useBusGPS } from './hooks/useFirebase';
 
 const ONBOARDING_KEY = 'aata-go-onboarded';
@@ -87,11 +88,13 @@ export default function App() {
           />
         )}
         {showMap && (
-          <LiveMap
-            route={selectedRoute}
-            busPositions={busPositions}
-            onBack={handleBackFromMap}
-          />
+          <ErrorBoundary onBack={handleBackFromMap}>
+            <LiveMap
+              route={selectedRoute}
+              busPositions={busPositions}
+              onBack={handleBackFromMap}
+            />
+          </ErrorBoundary>
         )}
         {!showMap && activeTab === 'map' && (
           <div className="h-full flex flex-col items-center justify-center bg-navy-900 px-8">

@@ -112,8 +112,14 @@ export default function LiveMap({ route, busPositions, onBack }) {
   }, []);
 
   const busMarkers = useMemo(() => {
+    if (!busPositions || !Array.isArray(busPositions)) return [];
     return busPositions
-      .filter((b) => b.lat && b.lng)
+      .filter((b) => {
+        if (!b) return false;
+        const lat = parseFloat(b.lat);
+        const lng = parseFloat(b.lng);
+        return !isNaN(lat) && !isNaN(lng);
+      })
       .map((b) => ({
         lat: parseFloat(b.lat),
         lng: parseFloat(b.lng),
@@ -123,21 +129,31 @@ export default function LiveMap({ route, busPositions, onBack }) {
 
   const stationMarkers = useMemo(() => {
     const markers = [];
-    if (route?.station_lat && route?.station_lng) {
-      markers.push({
-        lat: parseFloat(route.station_lat),
-        lng: parseFloat(route.station_lng),
-        name: route.station1Name || 'Station 1',
-        type: 'station1',
-      });
+    // Station 1 - always show if coordinates exist (even if 0)
+    if (route?.station_lat != null && route?.station_lng != null) {
+      const lat = parseFloat(route.station_lat);
+      const lng = parseFloat(route.station_lng);
+      if (!isNaN(lat) && !isNaN(lng)) {
+        markers.push({
+          lat,
+          lng,
+          name: route.station1Name || route.routeName || 'Station 1',
+          type: 'station1',
+        });
+      }
     }
-    if (route?.station2_lat && route?.station2_lng) {
-      markers.push({
-        lat: parseFloat(route.station2_lat),
-        lng: parseFloat(route.station2_lng),
-        name: route.station2Name || 'Station 2',
-        type: 'station2',
-      });
+    // Station 2 - show if coordinates exist
+    if (route?.station2_lat != null && route?.station2_lng != null) {
+      const lat = parseFloat(route.station2_lat);
+      const lng = parseFloat(route.station2_lng);
+      if (!isNaN(lat) && !isNaN(lng)) {
+        markers.push({
+          lat,
+          lng,
+          name: route.station2Name || 'Station 2',
+          type: 'station2',
+        });
+      }
     }
     return markers;
   }, [route]);
@@ -162,9 +178,9 @@ export default function LiveMap({ route, busPositions, onBack }) {
   };
 
   return (
-    <div className="h-full flex flex-col bg-navy-900 relative" style={{ height: 'calc(100vh - 100px)' }}>
+    <div className="h-full flex flex-col relative" style={{ height: 'calc(100vh - 100px)' }}>
       {/* Map */}
-      <div className="flex-1 relative" style={{ minHeight: '300px' }}>
+      <div className="flex-1 relative" style={{ minHeight: '300px', background: '#c8d6e5' }}>
         <MapContainer
           center={AA_CENTER}
           zoom={AA_ZOOM}
@@ -291,9 +307,21 @@ export default function LiveMap({ route, busPositions, onBack }) {
         {/* Stats bar */}
         <div className="absolute top-20 left-4 z-[1000] pointer-events-none">
           <div className="pointer-events-auto bg-navy-800/90 backdrop-blur-md border border-navy-600 rounded-xl px-3 py-2 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+            <span className={`w-2 h-2 rounded-full ${activeBusCount > 0 ? 'bg-accent-green animate-pulse' : 'bg-accent-amber'}`} />
             <span className="text-xs text-text-primary font-medium">
-              {activeBusCount} {activeBusCount === 1 ? 'bus' : 'buses'} active / {activeBusCount === 0 ? 'አውቶቢስ የለም' : `${activeBusCount} አውቶቢሶች ን၁`}
+              {activeBusCount > 0
+                ? `${activeBusCount} ${activeBusCount === 1 ? 'bus' : 'buses'} active / ${activeBusCount} አውቶቢሶች ን၅`
+                : 'No buses active / አውቶቢስ የለም'}
+            </span>
+          </div>
+        </div>
+
+        {/* Station count info */}
+        <div className="absolute top-20 right-4 z-[1000] pointer-events-none">
+          <div className="pointer-events-auto bg-navy-800/90 backdrop-blur-md border border-navy-600 rounded-xl px-3 py-2 flex items-center gap-2">
+            <span style={{ fontSize: 12, color: '#00bcd4' }}>&#9679;</span>
+            <span className="text-xs text-text-primary font-medium">
+              {stationMarkers.length} {stationMarkers.length === 1 ? 'station' : 'stations'}
             </span>
           </div>
         </div>
