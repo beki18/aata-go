@@ -6,28 +6,28 @@ const steps = [
     titleEn: 'Open the App',
     titleAm: 'መተግበሪያውን ይክፈቱ',
     descEn: 'Launch AATA Go on your phone or browser',
-    descAm: 'AATA Go ን በስልክዎ ወይም ብራውዘር ይክፈቱ',
+    descAm: 'AATA Go ን በስልክዎ  ይክፈቱ',
   },
   {
     icon: Bus,
     titleEn: 'Select Your Route',
     titleAm: 'መንገድዎን ይምረጡ',
     descEn: 'Choose the bus route you want to track',
-    descAm: 'የመከታተል አውቶቢስ መንገድ ይምረጡ',
+    descAm: 'መሄድ የሚፈልጉበትን የአውቶቢስ መንገድ ይምረጡ',
   },
   {
     icon: Navigation,
     titleEn: 'View Live Map',
-    titleAm: 'በተለመለመ ካርታ ይመልከቱ',
+    titleAm: 'በካርታ ይመልከቱ',
     descEn: 'See all active buses moving in real-time on the map',
-    descAm: 'ካርታ ላይ ንቁ አውቶቢሶችን በእውነት ጊዜ ይመልከቱ',
+    descAm: 'ካርታ ላይ በስራ ላይ ያሉትን አውቶቢሶችን ይመልከቱ',
   },
   {
     icon: Info,
     titleEn: 'Tap a Bus',
-    titleAm: 'አውቶቢስ ይጫኑ',
+    titleAm: 'አውቶቢሱን ይጫኑ',
     descEn: 'Tap any bus marker to see plate number and status',
-    descAm: 'ፕሌት ቁጥር እና ሁኔታ ለማየት አውቶቢስ ምልክት ይጫኑ',
+    descAm: 'ጎን ቁጥር እና ሁኔታ ለማየት አውቶቢስ ምልክት ይጫኑ',
   },
 ];
 
@@ -54,7 +54,7 @@ export default function AboutScreen() {
             AATA Go helps you track public buses in Addis Ababa in real-time.
           </p>
           <p className="text-text-secondary text-sm leading-relaxed mt-2">
-            AATA Go በአዲስ አበባ ውስጥ ያሉ የህዝብ አውቶቢሶችን በእውነት ጊዜ ይከታተልልዎታል።
+            AATA Go በአዲስ አበባ ውስጥ ያሉ የህዝብ አውቶቢሶችን ይከታተሉ።
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function AboutScreen() {
               {
                 icon: Navigation,
                 labelEn: 'Live GPS',
-                labelAm: 'በተለመለመ GPS',
+                labelAm: 'ቀጥታ GPS',
               },
               {
                 icon: MapPin,
