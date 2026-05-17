@@ -5,9 +5,9 @@ const steps = [
   {
     icon: Rocket,
     titleEn: 'Welcome to AATA Go',
-    titleAm: 'እንኳው እንግዳ በደህና መጡ',
+    titleAm: 'እንኳን በደህና መጡ',
     descEn: 'Track your bus in real-time across Addis Ababa',
-    descAm: 'በአዲስ አበባ ውስጥ አውቶቢስዎን በእውነት ጊዜ ይከታተሉ',
+    descAm: 'በአዲስ አበባ ውስጥ አውቶቢስዎን በቀጥታ ይከታተሉ',
     gradient: 'from-accent-cyan/20 to-accent-green/20',
     iconBg: 'bg-accent-cyan/20',
     iconColor: 'text-accent-cyan',
@@ -17,7 +17,7 @@ const steps = [
     titleEn: 'Choose Your Route',
     titleAm: 'የአውቶቢስ መንገድዎን ይምረጡ',
     descEn: 'Pick the bus route you want to follow',
-    descAm: 'የመከተል አውቶቢስ መንገድ ይምረጡ',
+    descAm: 'የሚፈልጉትን አውቶቢስ መንገድ ይምረጡ',
     gradient: 'from-accent-green/20 to-accent-amber/20',
     iconBg: 'bg-accent-green/20',
     iconColor: 'text-accent-green',
@@ -25,7 +25,7 @@ const steps = [
   {
     icon: Navigation,
     titleEn: 'Track Buses Live',
-    titleAm: 'አውቶቢሶችን በተለመለመ ይከታተሉ',
+    titleAm: 'አውቶቢሶችን በቀጥታ ይከታተሉ',
     descEn: 'See where buses are on the map right now',
     descAm: 'አውቶቢሶችን አሁን ካርታ ላይ ይመልከቱ',
     gradient: 'from-accent-amber/20 to-accent-cyan/20',
@@ -35,7 +35,7 @@ const steps = [
   {
     icon: Bus,
     titleEn: "You're All Set!",
-    titleAm: 'ሁሉም ዝግጁ ነዎት!',
+    titleAm: 'ዝግጁ ነዎት!',
     descEn: 'Start tracking your bus now',
     descAm: 'አውቶቢስዎን አሁን ይከታተሉ',
     gradient: 'from-accent-cyan/20 to-accent-green/20',
