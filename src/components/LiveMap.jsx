@@ -19,9 +19,9 @@ import {
 
 const AA_CENTER = [9.025, 38.7469];
 const AA_ZOOM = 13;
-const DARK_TILES = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-const DARK_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>';
+// Standard clear map tiles - easy to see roads and places
+const MAP_TILES = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const MAP_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
 // Custom marker icons
 function createBusIcon(isMoving) {
@@ -172,7 +172,7 @@ export default function LiveMap({ route, busPositions, onBack }) {
           zoomControl={false}
           attributionControl={true}
         >
-          <TileLayer url={DARK_TILES} attribution={DARK_ATTRIBUTION} />
+          <TileLayer url={MAP_TILES} attribution={MAP_ATTRIBUTION} />
 
           {/* Route line */}
           {routeLine && (
@@ -293,7 +293,7 @@ export default function LiveMap({ route, busPositions, onBack }) {
           <div className="pointer-events-auto bg-navy-800/90 backdrop-blur-md border border-navy-600 rounded-xl px-3 py-2 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
             <span className="text-xs text-text-primary font-medium">
-              {activeBusCount} buses active
+              {activeBusCount} {activeBusCount === 1 ? 'bus' : 'buses'} active / {activeBusCount === 0 ? 'አውቶቢስ የለም' : `${activeBusCount} አውቶቢሶች ን၁`}
             </span>
           </div>
         </div>

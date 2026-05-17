@@ -88,7 +88,7 @@ export default function RouteSelection({ routes, onSelectRoute, loading }) {
                 className={`animate-fade-in w-full text-left p-5 rounded-2xl transition-all duration-200 active:scale-[0.98] ${
                   route.busCount > 0
                     ? 'bg-navy-800 border border-navy-600 hover:border-accent-cyan/30 hover:bg-navy-700'
-                    : 'bg-navy-800/50 border border-navy-700 opacity-70'
+                    : 'bg-navy-800 border border-navy-600 hover:border-accent-cyan/30 hover:bg-navy-700'
                 }`}
                 style={{ animationDelay: `${index * 80}ms` }}
               >
@@ -122,8 +122,8 @@ export default function RouteSelection({ routes, onSelectRoute, loading }) {
                     </div>
 
                     {route.busCount === 0 && (
-                      <p className="text-text-secondary/60 text-xs">
-                        No buses active / እንዲያውም አውቶቢስ የለም
+                      <p className="text-accent-amber/70 text-xs">
+                        No buses active now - view route map / አሁን አውቶቢስ የለም - መንገዱን ይመልከቱ
                       </p>
                     )}
                   </div>
