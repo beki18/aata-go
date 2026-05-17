@@ -162,9 +162,9 @@ export default function LiveMap({ route, busPositions, onBack }) {
   };
 
   return (
-    <div className="h-full flex flex-col bg-navy-900 relative">
+    <div className="h-full flex flex-col bg-navy-900 relative" style={{ height: 'calc(100vh - 100px)' }}>
       {/* Map */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative" style={{ minHeight: '300px' }}>
         <MapContainer
           center={AA_CENTER}
           zoom={AA_ZOOM}
